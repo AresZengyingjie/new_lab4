@@ -1,0 +1,125 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+function startTime()
+{
+var today=new Date()
+var h=today.getHours()
+var m=today.getMinutes()
+var s=today.getSeconds()
+// add a zero in front of numbers<10
+m=checkTime(m)
+s=checkTime(s)
+document.getElementById('txt').innerHTML=h+":"+m+":"+s
+t=setTimeout('startTime()',500)
+}
+
+function checkTime(i)
+{
+if (i<10) 
+  {i="0" + i}
+  return i
+}
+</script>
+	<head>
+		<title>BookDB</title>
+		<link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+	</head>
+
+<body onload="startTime()">
+    <div class = "header">
+        <div class = "top">
+        <p class = "left"><strong>欢迎来到数字图书馆</strong></p>
+        <p class = "right">
+            <a href = "">点一个赞<a>|
+            <a href = "">给我们留言<a>|
+            <a href = "">加入收藏<a></p>
+        </div>
+        
+        <div class = "func">
+            <table><tbody><tr>
+            <td class = "t1">
+                <a href = "">
+                    <img src="/static/img/logo.jpg" alt="Will's website~">
+                </a>
+            </td>
+            <td class = "t3"><a>现在的时间是：<div id="txt"></div></a></td>
+            <td class = "t3">
+                <div  id="topsearch">
+                    <a>根据作者名称搜索：</a>
+                    <form action="/Authorbook/" method="get">
+                        <input type="text" name="AuthorName">
+                        <input type="submit" value="查询" class="button">
+                    </form>
+                </div>
+            </td>
+            </tr></tbody></table>
+        </div>
+    </div>
+	<div id = "container">
+	<div id = "content">
+    <div id = "body-content">
+        <div id = "description" class = "section">  
+            <p>
+                这里是一个小型数字图书馆，用户可自行查询阅读想要的书目。
+            </p>
+
+        </div>
+        <div>
+            <form>
+              <fieldset>
+                    <legend><p><span>书籍列表如下:</span></p></legend>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody><tr>
+                        {% for book in book_list %}
+                            
+                        	<h1 >
+                                <strong>-----------------------------------------------</strong><br>
+                                <a href="/Book/{{ book.ISBN }}">Title: {{ book.Title }} </a>
+                            </h1>
+                            <form action="/DelBook/{{ book.ISBN }}/" method="get">
+                                <input type="submit" value="删除" class="button">
+                            </form> &nbsp&nbsp&nbsp&nbsp
+                            <form action="/UpdateBook/{{ book.ISBN }}/" method="get">
+                                <input type="submit" value="更新" class="button">
+                            </form>   
+                        {% endfor%}
+                        </tr></tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </form>
+          
+    </div>
+    <div id ="body-content" class="section">  
+        <ul>
+        <form action="/AddBook/" method="get">
+            <fieldset>
+            <legend><h3>欢迎为数据库添加书籍：</h3></legend>
+            <input type="submit" value="添加书籍" class="button">
+            </fieldset>
+        </form>
+        </ul>
+    </div>
+    <div id="body-content" class="section">
+        <form>
+            <fieldset>
+    		<legend><h3>友情链接</h3></legend>
+            <strong>--------------------------------------------------------</strong>
+    		<p>
+                <a href="http://www.dangdang.com/"><img src="/static/img/dd.jpg"></a> 
+    			<a href="http://www.china-pub.com/"><img src="/static/img/hh.jpg"></a> 
+    			<a href="http://www.bookschina.com/"><img src="/static/img/logo17.jpg"></a> <br>
+    			<a href="http://www.nlc.gov.cn/"><img src="/static/img/12.jpg"></a>
+    			<a href="http://www.kongfz.com/"><img src="/static/img/kong.jpg"></a><br>
+    		</p>
+            <strong>--------------------------------------------------------</strong>
+            </fieldset>
+        </form>      
+	</div>
+    <div id="footer" style="text-align:center; font-size:15px; ">
+    	<strong>Copyright © Zeng Yingjie</strong>
+    </div>
+	</div></div>
+</body>
+</html> 

@@ -1,0 +1,27 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<head>
+		<title>BookDB</title>
+		<link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+	</head>
+<body>      
+<div>
+    <form action="/update_Book/{{ book.ISBN }}/{{ book.AuthorID }}/" method="get">
+        <fieldset>
+        <legend><h2>书籍信息如下：</h2></legend><br>
+        <li>书目ISBN: {{ book.ISBN }}</li><br>
+        <li>书目名称: {{ book.Title }}</li><br>
+        <li>作者编号: <input type="text" name="AuthorID" value={{ book.AuthorID }}></li><br>
+        <li>书目价格: <input type="text" name="Price" value={{ book.Price }}></li><br>
+        <li>出版社: &nbsp;&nbsp;&nbsp;<input type="text" name="Publisher" value={{ book.Publisher }}></li><br>
+        <li>出版日期: <input type="text" name="PublishDate" value={{ book.PublishDate }}></li><br>
+        <li>简要介绍: {{ book.Summary }}</li><br>
+        <input type="submit" value="更新" class="button">
+        </fieldset>
+    </form>
+</div>
+</body>
+<div id="footer" style="text-align:center; font-size:15px;">
+	<strong>Copyright © Zeng Yingjie</strong>
+</div>
+</html>  

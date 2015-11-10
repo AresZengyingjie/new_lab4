@@ -1,0 +1,25 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<head>
+		<title>BookDB</title>
+		<link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+	</head>
+<div>
+    <form>
+      <fieldset>
+        <legend><h2>书籍信息如下：</h2></legend><br>
+		<li>>书目名称: {{ book.Title }}</li><br>
+		<li>书目ISBN: {{ book.ISBN }}</li><br>
+		<li><a href="/Author/{{ book.AuthorID }}">作者编号: {{ book.AuthorID }}</a></li><br>
+		<li>书目价格: {{ book.Price }}</li><br>
+		<li>出版社: &nbsp;&nbsp;&nbsp;{{ book.Publisher }}</li><br>
+		<li>出版日期: {{ book.PublishDate }}</li><br>
+		<li>简要介绍:{{ book.Summary }}</li><br>
+		<p><a href="/">返回首页</a></p><br>
+        </fieldset>
+	</form>    
+</div>
+<div id="footer" style="text-align:center; font-size:15px;">
+	<strong>Copyright © Zeng Yingjie</strong>
+</div>
+</html>

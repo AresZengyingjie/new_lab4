@@ -1,0 +1,23 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<head>
+		<title>BookDB</title>
+		<link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+	</head>
+<div>
+    
+    <form action="/update_Author/{{ author.AuthorID }}/" method="get">
+        <fieldset>
+        <legend><h2>作者信息如下：</h2></legend><br>
+        <li>作者编号：<input type="text" name="AuthorID" value={{ author.AuthorID }}></li><br>
+        <li>作者姓名：<input type="text" name="Name" value={{ author.Name }}></li><br>
+        <li>作者年龄：<input type="text" name="Age" value={{ author.Age }}></li><br>
+        <li>所属国家： <input type="text" name="Country" value={{ author.Country }}></li><br>
+        <input type="submit" value="更新" class="button">
+        </fieldset>
+    </form>
+</div>
+<div id="footer" style="text-align:center; font-size:15px;">
+	<strong>Copyright © Zeng Yingjie</strong>
+</div>
+</html> 
